@@ -29,19 +29,23 @@ public class BatContral : MonoBehaviour {
 		if(Input.GetButtonDown("Fire1") || Input.GetKeyDown(KeyCode.Space)){
 			source.PlayOneShot (fly);
 			body.AddForce (force);
+//			Debug.Log ("Add Force");
 		}
 	}
 
 	void OnTriggerEnter2D(Collider2D other){
+		Debug.Log ("OnTriggerEnter2D");
 		if(other.gameObject.tag.CompareTo("Point") == 0){
 			source.PlayOneShot (point);
 			score++;
+			Debug.Log ("Point");
 		}
 
 		if(other.gameObject.tag.CompareTo("Wall") == 0){
 			source.PlayOneShot (die);
 			Time.timeScale = 0;
 			isOver = true;
+			Debug.Log ("Wall");
 		}
 	}
 
